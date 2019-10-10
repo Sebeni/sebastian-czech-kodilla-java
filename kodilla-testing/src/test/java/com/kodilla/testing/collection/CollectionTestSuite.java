@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CollectionTestSuite {
+    //Exercise 6.3
     private static Random random = new Random();
     private static ArrayList<Integer> emptyList = new ArrayList<>();
     private static ArrayList<Integer> normalList = new ArrayList<>();
     private static OddNumbersExterminator testCase = new OddNumbersExterminator();
-
+    
     @Rule
     public TestName name= new TestName();
  
