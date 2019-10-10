@@ -4,13 +4,14 @@ import org.junit.*;
 import org.junit.rules.TestName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class CollectionTestSuite {
     //Exercise 6.3
-    private static Random random = new Random();
     private static ArrayList<Integer> emptyList = new ArrayList<>();
-    private static ArrayList<Integer> normalList = new ArrayList<>();
+    private static ArrayList<Integer> normalList;
     private static OddNumbersExterminator testCase = new OddNumbersExterminator();
     
     @Rule
@@ -23,23 +24,16 @@ public class CollectionTestSuite {
 
     @Test
     public void testOddNumbersExterminatorNormalList(){
-        boolean allEvenExterminated = true;
-        for(Integer i : testCase.exterminate(normalList)){
-            if(i%2 != 0){
-                allEvenExterminated = false;
-                break;
-            }
-        }
-        Assert.assertTrue(allEvenExterminated);
+        List<Integer> result = testCase.exterminate(normalList);
+        boolean anyOddSurvive = result.contains(5) || result.contains(7);
+        
+        Assert.assertFalse(anyOddSurvive);
     }
     
     @BeforeClass
     public static void beforeClass(){
-        for(int i = 0; i < 10; i++){
-            int randomNum = random.nextInt(1000);
-            normalList.add(randomNum);
-            normalList.add(randomNum + 1);
-        }
+        Integer[] array = {2,5,7,4};
+        normalList = new ArrayList<>(Arrays.asList(array));
     }
     
     @Before
