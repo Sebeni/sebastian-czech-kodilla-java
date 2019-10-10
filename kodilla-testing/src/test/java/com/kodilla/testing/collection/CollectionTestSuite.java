@@ -25,12 +25,10 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList(){
         List<Integer> result = testCase.exterminate(normalList);
-        boolean anyOddSurvive = result.contains(5) || result.contains(7);
-        boolean onlyEven = result.contains(2) && result.contains(4);
-        boolean correctSize = result.size() == 2;
-        boolean end = !anyOddSurvive && onlyEven && correctSize;
         
-        Assert.assertTrue(end);
+        Assert.assertFalse(result.contains(5) || result.contains(7));
+        Assert.assertTrue(result.contains(2) && result.contains(4));
+        Assert.assertEquals(2, result.size());
     }
     
     @BeforeClass
