@@ -30,6 +30,7 @@ public class ShapeCollectorTestSuite {
         String message = sc.removeFigure(square);
 
         Assert.assertEquals("Figure removed", message);
+        Assert.assertEquals(0, sc.getShapeList().size());
     }
     
     @Test
@@ -42,6 +43,27 @@ public class ShapeCollectorTestSuite {
     }
     
     @Test
+    public void testGetFigureIndexOutOfBound(){
+        sc.addFigure(square);
+        
+        Shape shape = sc.getFigure(100);
+        
+        //when out of bound return null shape
+        Assert.assertNull(shape);
+    }
+    
+    @Test
+    public void testGetFigureNegativeIndex(){
+        sc.addFigure(square);
+
+        Shape shape = sc.getFigure(-100);
+
+        //when negative index return null shape
+        Assert.assertNull(shape);
+    }
+    
+    
+    @Test
     public void testShowFigures(){
         sc.addFigure(square);
         sc.addFigure(triangle);
@@ -50,7 +72,6 @@ public class ShapeCollectorTestSuite {
         String expectedResult = "square 4.0 triangle 2.0 circle 12.56 ";
         Assert.assertEquals(expectedResult, sc.showFigures());
     }
-    
     
     @BeforeClass
     public static void beforeAllTests(){
