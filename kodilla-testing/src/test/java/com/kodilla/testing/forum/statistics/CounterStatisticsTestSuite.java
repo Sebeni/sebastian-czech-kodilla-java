@@ -93,6 +93,9 @@ public class CounterStatisticsTestSuite {
         counter.showStatistics();
 
         Assert.assertTrue(counter.getCommentCount() < counter.getPostCount());
+        Assert.assertEquals(1000, counter.getPostCount());
+        Assert.assertEquals(100, counter.getCommentCount());
+        Assert.assertEquals(0.1, counter.getAvgCommentNumPerPost(), 0);
     }
 
     //gdy liczba komentarzy > liczba postów,
@@ -105,6 +108,9 @@ public class CounterStatisticsTestSuite {
         counter.showStatistics();
 
         Assert.assertTrue(counter.getCommentCount() > counter.getPostCount());
+        Assert.assertEquals(100, counter.getPostCount());
+        Assert.assertEquals(1000, counter.getCommentCount());
+        Assert.assertEquals(10, counter.getAvgCommentNumPerPost(), 0);
     }
 
     //gdy liczba użytkowników = 0,
