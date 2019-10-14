@@ -72,6 +72,49 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+    
+    
+    //gdy użytkownik nie ma wypożyczonych żadnych książek,
+    @Test
+    public void testListBooksInHandsOf0Books(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf0Books = new ArrayList<>();
+        LibraryUser libraryUser = new LibraryUser("Adam", "Smith", "1234");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOf0Books);
+        
+        List<Book> theListOfBooksInUsersHand = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        assertEquals(0, theListOfBooksInUsersHand.size());
+    }
+    
+    //gdy ma wypożyczoną jedną książkę,
+    @Test
+    public void testListBooksInHandsOf1Book(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf1Book = generateListOfNBooks(1);
+        LibraryUser libraryUser = new LibraryUser("Joe", "Smith", "5678");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOf1Book);
+
+        List<Book> theListOfBooksInUsersHand = bookLibrary.listBooksInHandsOf(libraryUser);
+        
+        assertEquals(1, theListOfBooksInUsersHand.size());
+    }
+    
+    //gdy ma wypożyczonych 5 książek.
+    @Test
+    public void testListBooksInHandsOf5Books(){
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf5Book = generateListOfNBooks(5);
+        LibraryUser libraryUser = new LibraryUser("Johnny", "Smith", "9101");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOf5Book);
+
+        List<Book> theListOfBooksInUsersHand = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        assertEquals(5, theListOfBooksInUsersHand.size());
+    }
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
@@ -81,7 +124,4 @@ public class BookDirectoryTestSuite {
         }
         return resultList;
     }
-    
-     
-    
 }
