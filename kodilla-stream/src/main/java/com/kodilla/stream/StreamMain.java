@@ -1,15 +1,40 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.reference.FunctionalCalculator;
+
+import java.util.Arrays;
 
 public class StreamMain {
     public static void main(String[] args) {
 
+        PoemBeautifier beautifier = new PoemBeautifier();
+        String toBeautify = "Trying to understand lambdas";
         
+        beautifier.beautify(toBeautify, String::toUpperCase);
+        beautifier.beautify(toBeautify, s -> "¯\\_(ツ)_/¯ " + s + " ¯\\_(ツ)_/¯");
+        beautifier.beautify(toBeautify, s -> new StringBuilder(s).reverse().toString());
         
+        beautifier.beautify(toBeautify, s -> {
+            char[] charArray = s.toCharArray();
+            for(int i = 0; i < charArray.length; i++){
+                if(i%2==0) {
+                    charArray[i] = Character.toUpperCase(charArray[i]);
+                }
+            }
+            return String.copyValueOf(charArray);
+            }
+        );
         
-        
+        beautifier.beautify(toBeautify, s -> {
+            String[] split = s.split("\\s+");
+            StringBuilder result = new StringBuilder();
+            for(int i = split.length-1; i >=0; i--){
+                result.append(split[i] + " ");
+            }
+            return result.toString();
+        });
         
         //standard OOP
         /*
