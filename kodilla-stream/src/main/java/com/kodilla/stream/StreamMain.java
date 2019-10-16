@@ -1,6 +1,7 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
@@ -8,7 +9,13 @@ import java.util.Arrays;
 
 public class StreamMain {
     public static void main(String[] args) {
+        //Module 7.2
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
+        
 
+        //Exercise 7.1
+        /*
         PoemBeautifier beautifier = new PoemBeautifier();
         String toBeautify = "Trying to understand lambdas";
         
@@ -31,11 +38,13 @@ public class StreamMain {
             String[] split = s.split("\\s+");
             StringBuilder result = new StringBuilder();
             for(int i = split.length-1; i >=0; i--){
-                result.append(split[i] + " ");
+                result.append(split[i]).append(" ");
             }
             return result.toString();
         });
+         */
         
+        //Module 7.1
         //standard OOP
         /*
         SaySomething saySomething = new SaySomething();
