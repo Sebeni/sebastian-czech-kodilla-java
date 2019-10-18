@@ -2,6 +2,7 @@ package com.kodilla.stream.array;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.NoSuchElementException;
 import java.util.OptionalDouble;
 import java.util.stream.IntStream;
 
@@ -16,12 +17,12 @@ public interface ArrayOperations {
                 .map(n -> numbers[n])
                 .average();
         
-        if(result.isPresent()){
-            BigDecimal temp = new BigDecimal(result.getAsDouble());
-            temp = temp.setScale(2, RoundingMode.HALF_UP);
-            return temp.doubleValue();
-        } else {
-            return 0;
-        }
+       try{
+           BigDecimal temp = new BigDecimal(result.getAsDouble());
+           temp = temp.setScale(2, RoundingMode.HALF_UP);
+           return temp.doubleValue();
+       } catch (NoSuchElementException e){
+           return 0;
+       }
     }
 }
