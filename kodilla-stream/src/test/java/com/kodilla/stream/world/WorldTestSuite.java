@@ -31,7 +31,7 @@ public class WorldTestSuite {
         
         BigDecimal result = world.getContinents().stream()
                 .flatMap(continent -> continent.getCountryList().stream()
-                        .map(Country::getPeopleQuantity))
+                        .map(country -> country.getPeopleQuantity()))
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
                     
         Assert.assertEquals(new BigDecimal("3088315106"), result);
