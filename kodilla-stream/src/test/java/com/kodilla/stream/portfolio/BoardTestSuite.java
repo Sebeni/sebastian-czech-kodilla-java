@@ -6,9 +6,10 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
-
+import static java.time.temporal.ChronoUnit.DAYS;
 
 
 public class BoardTestSuite {
@@ -139,5 +140,51 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
     
+    //Exercise 7.6
+    @Test
+    public void testAddTaskListAverageWorkingOnTaskTwoStreams(){
+        Board project = prepareTestData();
+
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        
+        
+        //two streams
+        long howManyTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .count();
+        
+        Assert.assertEquals(3, howManyTasks);
+        
+        long sumDays = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(task -> DAYS.between(task.getCreated(), LocalDate.now()))
+                .reduce(0L, (sum, current) -> sum = sum + current);
+        
+        Assert.assertEquals(30, sumDays);
+        
+        double average = (double) sumDays / howManyTasks;
+        
+        Assert.assertEquals(10.0, average,0);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTaskOneStream(){
+        Board project = prepareTestData();
+
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        OptionalDouble average = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(task -> DAYS.between(task.getCreated(), LocalDate.now()))
+                .mapToLong(value -> value)
+                .average();
+        
+        Assert.assertEquals(10.0, average.getAsDouble(),0);
+    }
     
 }
