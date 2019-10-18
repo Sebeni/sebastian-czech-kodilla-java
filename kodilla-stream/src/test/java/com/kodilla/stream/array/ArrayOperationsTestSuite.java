@@ -6,12 +6,22 @@ import org.junit.Test;
 public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage(){
-        int[] array = {1, 2, 3, 4, 5};
+        //3.83
+        int[] arrayRoundDown = {1, 2, 3, 4, 5, 8};
         
-        double result = ArrayOperations.getAverage(array);
+        //one element
+        int[] arrayOneElement = {5};
         
-        Assert.assertEquals(3.0, result, 0);
+        //5.67
+        int[] arrayRoundUp = {11, 4, 2};
         
+        double resultRoundDown = ArrayOperations.getAverage(arrayRoundDown);
+        double resultOneElement = ArrayOperations.getAverage(arrayOneElement);
+        double resultRoundUp = ArrayOperations.getAverage(arrayRoundUp);
+        
+        Assert.assertEquals(3.83, resultRoundDown, 0);
+        Assert.assertEquals(5.00, resultOneElement, 0);
+        Assert.assertEquals(5.67, resultRoundUp, 0);
     }
     
     @Test
