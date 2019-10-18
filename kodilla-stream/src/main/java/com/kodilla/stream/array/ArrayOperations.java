@@ -17,12 +17,8 @@ public interface ArrayOperations {
                 .map(n -> numbers[n])
                 .average();
         
-       try{
-           BigDecimal temp = new BigDecimal(result.getAsDouble());
-           temp = temp.setScale(2, RoundingMode.HALF_UP);
-           return temp.doubleValue();
-       } catch (NoSuchElementException e){
-           return 0;
-       }
+        BigDecimal temp = new BigDecimal(result.orElse(0));
+        temp = temp.setScale(2, RoundingMode.HALF_UP);
+        return temp.doubleValue();
     }
 }
