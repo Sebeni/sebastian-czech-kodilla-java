@@ -10,17 +10,18 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    public void readFile() {
+    public void readFile() throws FileReaderException{
 
         File file = new File(getClass().getClassLoader().getResource("file/names.txt").getFile());
         System.out.println(file.getPath());
 
 
-        try (Stream<String> fileLines = Files.lines(Paths.get(file.getPath()))) {
+        try (Stream<String> fileLines = Files.lines(Paths.get("file.getPath()"))) {
 
             fileLines.forEach(System.out::println);
         } catch (IOException e) {
             System.out.println("Something wrong :(" + e);
+            throw new FileReaderException();
         } finally {
             System.out.println("Finally");
         }
