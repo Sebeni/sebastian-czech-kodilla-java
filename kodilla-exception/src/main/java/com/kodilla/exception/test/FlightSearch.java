@@ -11,11 +11,19 @@ public class FlightSearch {
     }
     
     
-    public boolean findFlight(Flight flight) throws RouteNotFoundException {
+    public void findFlight(Flight flight) throws RouteNotFoundException {
         if(possibleFlights.containsKey(flight.getDeparture()) && possibleFlights.containsKey(flight.getArrivalAirport())){
-            return possibleFlights.get(flight.getArrivalAirport());
+            printingMessages(flight);
         } else {
             throw new RouteNotFoundException("Route not find!");
+        }
+    }
+    
+    private void printingMessages(Flight flight){
+        if(possibleFlights.get(flight.getArrivalAirport())){
+            System.out.println("Route possible");
+        } else {
+            System.out.println("Route impossible");
         }
     }
 }
