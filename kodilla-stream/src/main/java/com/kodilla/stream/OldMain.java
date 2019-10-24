@@ -109,7 +109,7 @@ public class OldMain {
         String toBeautify = "Trying to understand lambdas";
         
         beautifier.beautify(toBeautify, String::toUpperCase);
-        beautifier.beautify(toBeautify, s -> "¯\\_(ツ)_/¯ " + s + " ¯\\_(ツ)_/¯");
+        beautifier.beautify(toBeautify, s -> "!!!" + s + "!!!");
         beautifier.beautify(toBeautify, s -> new StringBuilder(s).reverse().toString());
         
         beautifier.beautify(toBeautify, s -> {
