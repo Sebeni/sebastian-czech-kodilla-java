@@ -12,6 +12,8 @@ public class FileReader {
 
     public void readFile() throws FileReaderException{
 
+       
+
         File file = new File(getClass().getClassLoader().getResource("file/names.txt").getFile());
         System.out.println(file.getPath());
 

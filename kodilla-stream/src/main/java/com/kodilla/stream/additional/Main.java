@@ -7,7 +7,7 @@ public class Main {
     
     static long getCountEmptyStringUsingJava8(List<String> strings){
         return strings.stream()
-                .filter(s -> s.matches("^$"))
+                .filter(String::isEmpty)
                 .count();
     }
 
