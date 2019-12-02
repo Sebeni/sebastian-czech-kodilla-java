@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.product.order;
 
 public class Product implements Item {
     private String name;

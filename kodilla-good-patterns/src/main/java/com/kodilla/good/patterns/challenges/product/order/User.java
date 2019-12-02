@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.product.order;
 
 import java.util.ArrayList;
 import java.util.List;
