@@ -2,12 +2,12 @@ package com.kodilla.good.patterns.challenges.flights;
 
 public enum PlaceName {
     WARSZAWA,
-    WROCŁAW,
+    WROCLAW,
     SZCZECIN,
-    POZNAŃ,
+    POZNAN,
     LUBLIN,
-    KRAKÓW,
-    GDAŃSK,
+    KRAKOW,
+    GDANS,
     BYDGOSZCZ,
-    BIAŁYSTOK,
+    BIALYSTOK,
 }

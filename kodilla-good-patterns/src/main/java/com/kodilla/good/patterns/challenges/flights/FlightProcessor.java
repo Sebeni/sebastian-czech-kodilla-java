@@ -2,19 +2,19 @@ package com.kodilla.good.patterns.challenges.flights;
 
 public class FlightProcessor {
     static {
-        new Flight(PlaceName.WARSZAWA, PlaceName.WROCŁAW);
-        new Flight(PlaceName.WARSZAWA, PlaceName.POZNAŃ, PlaceName.WROCŁAW);
-        new Flight(PlaceName.WROCŁAW, PlaceName.WARSZAWA);
+        new Flight(PlaceName.WARSZAWA, PlaceName.WROCLAW);
+        new Flight(PlaceName.WARSZAWA, PlaceName.POZNAN, PlaceName.WROCLAW);
+        new Flight(PlaceName.WROCLAW, PlaceName.WARSZAWA);
         new Flight(PlaceName.SZCZECIN, PlaceName.WARSZAWA);
-        new Flight(PlaceName.SZCZECIN, PlaceName.BYDGOSZCZ, PlaceName.BIAŁYSTOK);
-        new Flight(PlaceName.BIAŁYSTOK, PlaceName.BYDGOSZCZ, PlaceName.SZCZECIN);
-        new Flight(PlaceName.GDAŃSK, PlaceName.LUBLIN, PlaceName.KRAKÓW);
-        new Flight(PlaceName.KRAKÓW, PlaceName.LUBLIN, PlaceName.GDAŃSK);
-        new Flight(PlaceName.GDAŃSK, PlaceName.WROCŁAW);
-        new Flight(PlaceName.SZCZECIN, PlaceName.POZNAŃ);
-        new Flight(PlaceName.WROCŁAW, PlaceName.LUBLIN);
-        new Flight(PlaceName.WROCŁAW, PlaceName.KRAKÓW, PlaceName.LUBLIN, PlaceName.BIAŁYSTOK);
-        new Flight(PlaceName.GDAŃSK, PlaceName.SZCZECIN, PlaceName.POZNAŃ, PlaceName.BYDGOSZCZ);
+        new Flight(PlaceName.SZCZECIN, PlaceName.BYDGOSZCZ, PlaceName.BIALYSTOK);
+        new Flight(PlaceName.BIALYSTOK, PlaceName.BYDGOSZCZ, PlaceName.SZCZECIN);
+        new Flight(PlaceName.GDANS, PlaceName.LUBLIN, PlaceName.KRAKOW);
+        new Flight(PlaceName.KRAKOW, PlaceName.LUBLIN, PlaceName.GDANS);
+        new Flight(PlaceName.GDANS, PlaceName.WROCLAW);
+        new Flight(PlaceName.SZCZECIN, PlaceName.POZNAN);
+        new Flight(PlaceName.WROCLAW, PlaceName.LUBLIN);
+        new Flight(PlaceName.WROCLAW, PlaceName.KRAKOW, PlaceName.LUBLIN, PlaceName.BIALYSTOK);
+        new Flight(PlaceName.GDANS, PlaceName.SZCZECIN, PlaceName.POZNAN, PlaceName.BYDGOSZCZ);
         new Flight(PlaceName.BYDGOSZCZ, PlaceName.SZCZECIN);
     }
     
