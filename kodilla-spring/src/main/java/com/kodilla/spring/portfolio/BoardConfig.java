@@ -14,10 +14,10 @@ public class BoardConfig {
     public TaskList getTaskList() {
         return new TaskList();
     }
-
+    
     @Bean
-    public Board getBoard() {
-        return new Board();
+    public Board getBoard(TaskList toDo, TaskList inProgress, TaskList doneList) {
+        return new Board(toDo, inProgress, doneList);
     }
 
 }

@@ -7,21 +7,9 @@ public class Board {
     private TaskList inProgressList;
     private TaskList doneList;
 
-    public Board() {
-    }
-
-    @Autowired
-    public void setToDoList(TaskList toDoList) {
+    public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList) {
         this.toDoList = toDoList;
-    }
-
-    @Autowired
-    public void setInProgressList(TaskList inProgressList) {
         this.inProgressList = inProgressList;
-    }
-
-    @Autowired
-    public void setDoneList(TaskList doneList) {
         this.doneList = doneList;
     }
 
