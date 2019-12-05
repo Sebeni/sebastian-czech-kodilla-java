@@ -35,6 +35,8 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
 
         Board board = context.getBean(Board.class);
+        
+        Arrays.asList(context.getBeanDefinitionNames()).stream().forEach(s -> System.out.println(s));
 
         TaskList toDoList = board.getToDoList();
         TaskList doneList = board.getDoneList();
