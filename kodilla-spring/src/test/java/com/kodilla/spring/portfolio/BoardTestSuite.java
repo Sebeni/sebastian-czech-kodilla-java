@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
@@ -38,17 +40,23 @@ public class BoardTestSuite {
         TaskList doneList = board.getDoneList();
         TaskList inProgressList = board.getInProgressList();
         
-        String taskToDo = "TODO";
-        String taskDone = "DONE";
-        String taskInProgress = "IN PROGRESS";
+        String taskToDo = "TODO task";
+        String taskDone = "DONE task";
+        String taskInProgress = "IN PROGRESS task";
         
         toDoList.addTaskToList(taskToDo);
         doneList.addTaskToList(taskDone);
         inProgressList.addTaskToList(taskInProgress);
         
-        Assert.assertEquals(taskToDo, toDoList.getTaskFromList(0));
-        Assert.assertEquals(taskDone, doneList.getTaskFromList(0));
-        Assert.assertEquals(taskInProgress, inProgressList.getTaskFromList(0));
+        String resultFromToDoList = toDoList.getTaskFromList(0);
+        String resultFromDoneList = doneList.getTaskFromList(0);
+        String resultFromInProgressList = inProgressList.getTaskFromList(0);
+
+        System.out.println(resultFromToDoList + "\n" + resultFromDoneList + "\n" + resultFromInProgressList);
+        
+        Assert.assertEquals(taskToDo, resultFromToDoList);
+        Assert.assertEquals(taskDone, resultFromDoneList);
+        Assert.assertEquals(taskInProgress, resultFromInProgressList);
         
         
     }
