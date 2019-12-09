@@ -2,7 +2,6 @@ package com.kodilla.spring;
 
 import com.kodilla.spring.codependency.First;
 import com.kodilla.spring.codependency.Second;
-import javafx.application.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
