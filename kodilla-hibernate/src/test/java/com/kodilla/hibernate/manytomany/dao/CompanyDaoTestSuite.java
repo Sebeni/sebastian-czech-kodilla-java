@@ -8,16 +8,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
-
+@Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
+    
     @Autowired
     CompanyDao companyDao;
     
@@ -114,6 +117,8 @@ public class CompanyDaoTestSuite {
         }
     }
 
+
+    
     @Test
     public void testRetrieveCompanyByThreeLetters(){
         Employee johnSmith = new Employee("John", "Smith");
@@ -135,7 +140,7 @@ public class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
-
+        
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
@@ -147,15 +152,19 @@ public class CompanyDaoTestSuite {
         List<Company> SofCompanyList = companyDao.retrieveCompanyByThreeLetters("Sof");
 
         Assert.assertEquals("Software Machine", SofCompanyList.get(0).getCompanyName());
-
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+        
+        List<Company> list = new ArrayList<>();
+        companyDao.findAll().forEach(company -> list.add(company));
+        System.out.println(list.size());
     }
+
     
+    @Test
+    public void testAfterTransactional() {
+        List<Company> list = new ArrayList<>();
+        companyDao.findAll().forEach(company -> list.add(company));
+        System.out.println(list.size());
+        
+    }
     
 }
