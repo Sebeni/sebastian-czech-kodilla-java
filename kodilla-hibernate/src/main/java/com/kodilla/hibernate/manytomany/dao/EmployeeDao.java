@@ -19,7 +19,7 @@ public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
     @Query(
             value = "SELECT * FROM EMPLOYEES " +
-                    "WHERE FIRST_NAME LIKE %:ARG% OR LAST_NAME LIKE %:ARG%",
+                    "WHERE FIRST_NAME LIKE CONCAT('%', :ARG, '%') OR LAST_NAME LIKE CONCAT('%', :ARG, '%')",
             nativeQuery = true)
     List<Employee> retrieveCompanyByNameFragment(@Param("ARG") String nameFragment);
 

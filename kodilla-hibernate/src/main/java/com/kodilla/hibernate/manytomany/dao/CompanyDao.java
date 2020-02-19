@@ -18,7 +18,7 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
     
     @Query(
             value = "SELECT DISTINCT * FROM COMPANIES " +
-                    "WHERE COMPANY_NAME LIKE %:NAME%",
+                    "WHERE COMPANY_NAME LIKE CONCAT('%', :NAME, '%')",
             nativeQuery = true)
     List<Company> retrieveCompanyByNameFragment(@Param("NAME") String nameFragment);
     
