@@ -32,17 +32,17 @@ public class InvoiceDaoTestSuite {
         Product spring = new Product("spring");
         Product watch = new Product("watch");
 
-        productDao.save(bean);
-        productDao.save(spring);
-        productDao.save(watch);
+//        productDao.save(bean);
+//        productDao.save(spring);
+//        productDao.save(watch);
        
         
         Invoice firstInvoice = new Invoice("01");
         Invoice secondInvoice = new Invoice("02");
 
-        invoiceDao.save(firstInvoice);
-        invoiceDao.save(secondInvoice);
-        
+//        invoiceDao.save(firstInvoice);
+//        invoiceDao.save(secondInvoice);
+//        
         Item firstItemFirstInvoice = new Item(new BigDecimal(10), 100, new BigDecimal(1000), bean, firstInvoice);
         firstItemFirstInvoice.addToProductAndInvoice();
 
@@ -74,10 +74,10 @@ public class InvoiceDaoTestSuite {
 
         Assert.assertTrue(readFirstInvoice.isPresent());
         Assert.assertTrue(readSecondInvoice.isPresent());
-        
-        
-        invoiceDao.deleteById(firstInvoiceId);
-        invoiceDao.deleteById(secondInvoiceId);
+
+
+//        invoiceDao.deleteById(firstInvoiceId);
+//        invoiceDao.deleteById(secondInvoiceId);
         
     }
     
