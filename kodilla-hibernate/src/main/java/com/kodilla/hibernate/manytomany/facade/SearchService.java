@@ -20,10 +20,10 @@ public class SearchService {
     }
     
     public List<Company> retrieveCompanyByName(String nameFragment) {
-        return companyDao.retrieveCompanyByNameFragment("%" + nameFragment + "%");
+        return companyDao.retrieveCompanyByNameFragment(nameFragment);
     }
     
     public List<Employee> retrieveEmployeeByName(String firstOrLastNameFragment) {
-        return employeeDao.retrieveCompanyByNameFragment("%" + firstOrLastNameFragment + "%");
+        return employeeDao.retrieveCompanyByNameFragment(firstOrLastNameFragment);
     }
 }
