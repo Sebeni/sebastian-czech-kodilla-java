@@ -8,21 +8,22 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
-    
+
     @Autowired
     CompanyDao companyDao;
-    
+
     @Autowired
     EmployeeDao employeeDao;
 
     @Test
-    public void testSaveManyToMany(){
+    public void testSaveManyToMany() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -57,19 +58,15 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, dataMaestersId);
         Assert.assertNotEquals(0, greyMatterId);
 
-        //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMaestersId);
+        companyDao.deleteById(greyMatterId);
+
     }
-    
-    
+
+
     @Test
-    public void testRetrieveEmplByLastName(){
+    public void testRetrieveEmplByLastName() {
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
@@ -97,24 +94,21 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
-        
+
         List<Employee> SmithList = employeeDao.retrieveEmplByLastName("Smith");
-        
+
         Assert.assertEquals("Smith", SmithList.get(0).getLastName());
 
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMaestersId);
+        companyDao.deleteById(greyMatterId);
+
     }
 
 
-    
     @Test
-    public void testRetrieveCompanyByThreeLetters(){
+    public void testRetrieveCompanyByThreeLetters() {
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
@@ -134,7 +128,7 @@ public class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
-        
+
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
@@ -146,19 +140,11 @@ public class CompanyDaoTestSuite {
         List<Company> SofCompanyList = companyDao.retrieveCompanyByThreeLetters("Sof");
 
         Assert.assertEquals("Software Machine", SofCompanyList.get(0).getCompanyName());
-        
-        List<Company> list = new ArrayList<>();
-        companyDao.findAll().forEach(company -> list.add(company));
-        System.out.println(list.size());
+
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMaestersId);
+        companyDao.deleteById(greyMatterId);
     }
 
-    
-    @Test
-    public void testAfterTransactional() {
-        List<Company> list = new ArrayList<>();
-        companyDao.findAll().forEach(company -> list.add(company));
-        System.out.println(list.size());
-        
-    }
-    
+
 }
