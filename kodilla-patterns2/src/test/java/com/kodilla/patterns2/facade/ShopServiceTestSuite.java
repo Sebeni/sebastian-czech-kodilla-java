@@ -73,10 +73,20 @@ class ShopServiceTestSuite {
         orderDto.addItem(new ItemDto(25L, 1));
         orderDto.addItem(new ItemDto(11L, 3));
         
+        OrderDto orderDto2 = new OrderDto();
+        orderDto.addItem(new ItemDto(125L, 100));
         try {
             orderFacade.processOrder(orderDto, 1L);
+            
         } catch (OrderProcessingException e) {
             
+        }
+
+        try {
+            orderFacade.processOrder(orderDto2, 1L);
+
+        } catch (OrderProcessingException e) {
+
         }
     }
 }
