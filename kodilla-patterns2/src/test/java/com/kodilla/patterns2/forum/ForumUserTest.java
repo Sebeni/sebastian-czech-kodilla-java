@@ -1,7 +1,10 @@
 package com.kodilla.patterns2.forum;
 
+import com.kodilla.patterns2.observer.forum.ForumTopic;
+import com.kodilla.patterns2.observer.forum.ForumUser;
+import com.kodilla.patterns2.observer.forum.JavaHelpForumTopic;
+import com.kodilla.patterns2.observer.forum.JavaToolsForumTopic;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package com.kodilla.patterns2.forum;
+package com.kodilla.patterns2.observer.forum;
 
 import java.util.ArrayList;
 import java.util.List;
